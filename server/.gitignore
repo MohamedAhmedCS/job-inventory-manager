@@ -1,0 +1,29 @@
+# .NET Core
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Visual Studio
+.vscode/
+.vs/
+launchSettings.json
+
+# NuGet
+*.nupkg
+packages/
+*.snupkg
+
+# ASP.NET secrets
+secrets.json
+*.db
+
+# Logs
+*.log
+logs/
+
+# OS-specific
+.DS_Store
+Thumbs.db
