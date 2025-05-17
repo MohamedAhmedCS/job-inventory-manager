@@ -38,31 +38,48 @@ function App() {
   };
 
   return (
-    <div style={{ padding: '2rem' }}>
-      <h1>Job Inventory Manager</h1>
-      <JobForm
-        onSubmit={editingJob ? handleUpdate : handleJobAdded}
-        initialValues={editingJob || undefined}
-        isEditing={!!editingJob}
-      />
+    <div className="min-h-screen bg-gray-50 p-6">
+      <h1 className="text-3xl font-bold text-blue-600 mb-6">Job Inventory Manager</h1>
+
+      <div className="bg-white shadow-md rounded-md p-6 mb-8">
+        <JobForm
+          onSubmit={editingJob ? handleUpdate : handleJobAdded}
+          initialValues={editingJob || undefined}
+          isEditing={!!editingJob}
+        />
+      </div>
+
       {loading ? (
-        <p>Loading...</p>
+        <p className="text-gray-600">Loading...</p>
       ) : jobs.length === 0 ? (
-        <p>No jobs found.</p>
+        <p className="text-gray-500 italic">No job applications found.</p>
       ) : (
-        <ul>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {jobs.map((job) => (
-            <li key={job.id}>
-              <strong>{job.title}</strong> at {job.company} — {job.status}
-              <button onClick={() => setEditingJob(job)} style={{ marginLeft: '1rem' }}>
-                Edit
-              </button>
-              <button onClick={() => handleDelete(job.id)} style={{ marginLeft: '1rem', color: 'red' }}>
-                Delete
-              </button>
-            </li>
+            <div key={job.id} className="bg-white shadow-md p-4 rounded-md border border-gray-200">
+              <h2 className="text-xl font-semibold">{job.title}</h2>
+              <p className="text-gray-600 mb-1">{job.company}</p>
+              <p className="text-sm text-gray-500 italic">{job.location}</p>
+              <p className="mt-2 text-sm text-blue-700">Status: {job.status}</p>
+              <p className="text-sm text-gray-400">Applied: {job.appliedDate}</p>
+              <p className="text-sm mt-2 text-gray-700">{job.notes}</p>
+              <div className="flex justify-end gap-2 mt-4">
+                <button
+                  onClick={() => setEditingJob(job)}
+                  className="px-3 py-1 text-sm bg-yellow-400 hover:bg-yellow-500 text-white rounded"
+                >
+                  Edit
+                </button>
+                <button
+                  onClick={() => handleDelete(job.id)}
+                  className="px-3 py-1 text-sm bg-red-500 hover:bg-red-600 text-white rounded"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

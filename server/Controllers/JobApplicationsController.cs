@@ -38,10 +38,25 @@ namespace server.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Update(int id, JobApplication job)
         {
-            if (id != job.Id) return BadRequest();
+            if (id != job.Id)
+                return BadRequest();
+
             _context.Entry(job).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return NoContent();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!_context.JobApplications.Any(e => e.Id == id))
+                    return NotFound();
+                else
+                    throw;
+            }
+
+            // Return the updated job so the frontend can process it
+            return Ok(job);
         }
 
         [HttpDelete("{id}")]
@@ -49,6 +64,7 @@ namespace server.Controllers
         {
             var job = await _context.JobApplications.FindAsync(id);
             if (job is null) return NotFound();
+
             _context.JobApplications.Remove(job);
             await _context.SaveChangesAsync();
             return NoContent();
