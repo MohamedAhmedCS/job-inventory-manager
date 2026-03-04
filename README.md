@@ -2,15 +2,15 @@
 
 A modern, full-stack web application for tracking job applications. Built with React, ASP.NET Core, and deployed for free using Railway, Vercel, and Cloudflare.
 
-## 🎯 Features
+## Features
 
-✅ **User Authentication** - JWT-based login/register
-✅ **Job Tracking** - Create, read, update, delete job applications
-✅ **Responsive Design** - Beautiful UI with Tailwind CSS
-✅ **Rate Limiting** - Built-in API protection (100 req/min)
-✅ **Global CDN** - Cloudflare edge caching
-✅ **Auto-Deploy** - GitHub Actions CI/CD pipeline
-✅ **Zero Cost** - Free tier deployment on Railway + Vercel + Cloudflare
+**User Authentication** - JWT-based login/register
+**Job Tracking** - Create, read, update, delete job applications
+**Responsive Design** - Beautiful UI with Tailwind CSS
+**Rate Limiting** - Built-in API protection (100 req/min)
+**Global CDN** - Cloudflare edge caching
+**Auto-Deploy** - GitHub Actions CI/CD pipeline
+**Zero Cost** - Free tier deployment on Railway + Vercel + Cloudflare
 
 ## 🏗️ Architecture
 
@@ -28,7 +28,7 @@ Frontend (React 19)          Backend (.NET Core 9)       Database
                   - Security Headers
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ### Prerequisites
 - [Node.js](https://nodejs.org) 18+
@@ -131,7 +131,7 @@ job-inventory-manager/
 └── README.md                   # This file
 ```
 
-## 🔐 Authentication
+##  Authentication
 
 Uses JWT (JSON Web Tokens) for stateless authentication:
 
@@ -288,3 +288,4 @@ Built as a portfolio project to demonstrate full-stack web development skills.
 ---
 
 **Questions?** Check the guides above or open an issue on GitHub.
+
